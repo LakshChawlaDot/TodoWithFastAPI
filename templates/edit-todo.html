@@ -1,0 +1,83 @@
+{% include "layout.html" %}
+
+<div class="container mt-5">
+    <div class="card shadow" style="max-width:600px; margin:auto;">
+
+        <div class="card-header text-center">
+            <h4>Edit your todo</h4>
+        </div>
+
+        <div class="card-body">
+            <form id="editTodoForm" action="/todos/edit/{{ todo.id }}" method="post">
+
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="title"
+                        value="{{ todo.title }}"
+                        required
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea
+                        name="description"
+                        class="form-control"
+                        rows="3"
+                        required
+                    >{{ todo.description }}</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Priority</label>
+                    <select name="priority" class="form-control">
+                        <option value="1" {% if todo.priority == 1 %}selected{% endif %}>1</option>
+                        <option value="2" {% if todo.priority == 2 %}selected{% endif %}>2</option>
+                        <option value="3" {% if todo.priority == 3 %}selected{% endif %}>3</option>
+                        <option value="4" {% if todo.priority == 4 %}selected{% endif %}>4</option>
+                        <option value="5" {% if todo.priority == 5 %}selected{% endif %}>5</option>
+                    </select>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        name="complete"
+                        id="complete"
+                        {% if todo.complete %}checked{% endif %}
+                    >
+                    <label class="form-check-label" for="complete">Complete</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Update Todo
+                </button>
+
+                <button
+                    id="deleteButton"
+                    type="button"
+                    class="btn btn-danger"
+                    onclick="deleteTodo({{ todo.id }})">
+                    Delete
+                </button>
+
+                <a href="/todos/todo-page" class="btn btn-secondary">
+                    Back
+                </a>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+function deleteTodo(id){
+    if(confirm("Delete this todo?")){
+        window.location.href = "/todos/delete/" + id;
+    }
+}
+</script>

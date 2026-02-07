@@ -1,0 +1,72 @@
+{% include 'layout.html' %}
+
+<div class="container mt-5">
+    <div class="card shadow" style="max-width:700px; margin:auto;">
+
+        <div class="card-header text-center">
+            <h3>Register</h3>
+        </div>
+
+        <div class="card-body">
+            <form id="register-form" action="/auth/register" method="post">
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <input type="text" class="form-control" name="email" required placeholder="Email">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" name="username" required placeholder="Username">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" name="firstname" required placeholder="First name">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" name="lastname" required placeholder="Last name">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Role</label>
+                        <input type="text" class="form-control" name="role" required placeholder="Role">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" name="phone" required placeholder="Phone number">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Verify Password</label>
+                    <input type="password" class="form-control" name="password2" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Sign Up
+                </button>
+
+            </form>
+        </div>
+
+        <div class="card-footer text-center">
+            <a href="/auth/login-page">Already have an account?</a>
+        </div>
+
+    </div>
+</div>
+
